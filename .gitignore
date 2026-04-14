@@ -1,0 +1,24 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.DS_Store
+.env
+.env.local
+
+scratch/
+.cache/
+
+# Generated engine outputs
+fingerprint/
+fingerprint-*/
+
+# Intermediate render files — keep final GIF/PNG/SVG committed
+assets/hero.mp4
+
+# Proprietary modules wired in later — never commit
+private/

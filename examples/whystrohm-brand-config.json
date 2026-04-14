@@ -1,0 +1,205 @@
+{
+  "schema_version": "0.1",
+  "brand_name": "WhyStrohm",
+  "source": "folder:whystrohm",
+  "generated_at": "2026-04-14 08:23:38",
+  "tone": {
+    "primary": "punchy",
+    "secondary": "direct",
+    "confidence": 1.0,
+    "uncertain": false
+  },
+  "cadence": {
+    "mean_sentence_length": 8.5,
+    "target_range": [
+      3,
+      15
+    ],
+    "fragment_rate": 0.317,
+    "punct_density": 20.5,
+    "first_person_ratio": 0.0107,
+    "second_person_ratio": 0.044,
+    "question_rate": 0.015,
+    "exclamation_rate": 0.002
+  },
+  "signature_words": [
+    {
+      "token": "guardrails",
+      "ratio": 3315.04,
+      "count": 29
+    },
+    {
+      "token": "bottleneck",
+      "ratio": 2972.11,
+      "count": 26
+    },
+    {
+      "token": "linkedin",
+      "ratio": 2857.8,
+      "count": 25
+    },
+    {
+      "token": "founder-led",
+      "ratio": 1714.68,
+      "count": 15
+    },
+    {
+      "token": "brands",
+      "ratio": 1371.74,
+      "count": 12
+    },
+    {
+      "token": "ruleset",
+      "ratio": 1371.74,
+      "count": 12
+    },
+    {
+      "token": "freelancer",
+      "ratio": 1257.43,
+      "count": 11
+    },
+    {
+      "token": "drifts",
+      "ratio": 1143.12,
+      "count": 10
+    },
+    {
+      "token": "vocabulary",
+      "ratio": 1143.12,
+      "count": 10
+    },
+    {
+      "token": "instagram",
+      "ratio": 1028.81,
+      "count": 9
+    },
+    {
+      "token": "carousels",
+      "ratio": 1028.81,
+      "count": 9
+    }
+  ],
+  "forbidden_words": [
+    "game",
+    "song",
+    "season",
+    "city",
+    "series",
+    "world",
+    "film",
+    "however",
+    "album",
+    "war",
+    "early",
+    "several",
+    "including",
+    "known",
+    "although",
+    "century",
+    "music",
+    "began",
+    "called",
+    "area"
+  ],
+  "vocabulary_clusters": [
+    {
+      "label": "system, brand, founder",
+      "exemplar": "production",
+      "top_tokens": [
+        "system",
+        "brand",
+        "founder",
+        "infrastructure",
+        "engine",
+        "guardrails",
+        "built",
+        "build"
+      ],
+      "size": 106
+    },
+    {
+      "label": "voice, video, without",
+      "exemplar": "something",
+      "top_tokens": [
+        "voice",
+        "video",
+        "without",
+        "decisions",
+        "people",
+        "tone",
+        "team",
+        "runs"
+      ],
+      "size": 164
+    },
+    {
+      "label": "every, like, sounds",
+      "exemplar": "knows",
+      "top_tokens": [
+        "every",
+        "like",
+        "sounds",
+        "never",
+        "gets",
+        "different",
+        "actually",
+        "right"
+      ],
+      "size": 85
+    },
+    {
+      "label": "rules, problem, post",
+      "exemplar": "working",
+      "top_tokens": [
+        "rules",
+        "problem",
+        "post",
+        "posts",
+        "email",
+        "work",
+        "first",
+        "enforcement"
+      ],
+      "size": 101
+    },
+    {
+      "label": "month, time, week",
+      "exemplar": "minutes",
+      "top_tokens": [
+        "month",
+        "time",
+        "week",
+        "three",
+        "minutes",
+        "hours",
+        "days",
+        "zero"
+      ],
+      "size": 43
+    },
+    {
+      "label": "content, output, layer",
+      "exemplar": "content",
+      "top_tokens": [
+        "content",
+        "output",
+        "layer",
+        "prompt",
+        "code",
+        "write",
+        "videos",
+        "linkedin"
+      ],
+      "size": 115
+    }
+  ],
+  "exemplar_sentences": [
+    "It knows your sentence structure.",
+    "When your brand voice lives in your head, every piece of content requires you.",
+    "Voice, visuals, timing — all enforced by the same system.",
+    "A system that codifies brand voice into guardrails and produces consistent content every time.",
+    "The system catches words and phrases that violate the brand voice before they go live."
+  ],
+  "baseline_corpus": "wikitext-2",
+  "embedding_model": "all-MiniLM-L6-v2"
+}

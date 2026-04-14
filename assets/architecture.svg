@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 720" width="1400" height="720" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="cyanGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#00D4FF"/>
+    </marker>
+  </defs>
+
+  <rect width="1400" height="720" fill="#0A0A0F"/>
+
+  <!-- Title -->
+  <text x="700" y="60" text-anchor="middle" font-size="28" font-weight="600" fill="#FFFFFF">
+    media-tsunami — Brand Fingerprint Engine
+  </text>
+  <text x="700" y="90" text-anchor="middle" font-size="14" fill="#6B7280">
+    URL or folder in. Executable voice rules out. No paid APIs.
+  </text>
+
+  <!-- INPUTS (left) -->
+  <g transform="translate(80, 180)">
+    <text x="0" y="-20" font-size="11" fill="#6B7280" letter-spacing="2">INPUTS</text>
+    <rect x="0" y="0" width="220" height="70" rx="10" fill="#1F2937" stroke="#00D4FF" stroke-opacity="0.4"/>
+    <text x="20" y="30" font-size="16" fill="#FFFFFF" font-weight="500">web_scraper</text>
+    <text x="20" y="52" font-size="12" fill="#9CA3AF">URL → 20 pages, content-density filter</text>
+
+    <rect x="0" y="90" width="220" height="70" rx="10" fill="#1F2937" stroke="#00D4FF" stroke-opacity="0.4"/>
+    <text x="20" y="120" font-size="16" fill="#FFFFFF" font-weight="500">folder_reader</text>
+    <text x="20" y="142" font-size="12" fill="#9CA3AF">folder of .md / .html / .txt</text>
+  </g>
+
+  <!-- Corpus pipe -->
+  <g transform="translate(310, 260)">
+    <path d="M0,0 H110" stroke="#00D4FF" stroke-width="2" marker-end="url(#arrow)" stroke-opacity="0.6"/>
+    <text x="55" y="-12" text-anchor="middle" font-size="11" fill="#6B7280">corpus</text>
+  </g>
+
+  <!-- ENGINE (center) -->
+  <g transform="translate(440, 150)">
+    <text x="185" y="-20" text-anchor="middle" font-size="11" fill="#6B7280" letter-spacing="2">ENGINE</text>
+    <rect x="0" y="0" width="370" height="350" rx="14" fill="#0F172A" stroke="url(#cyanGrad)" stroke-opacity="0.5" stroke-width="1"/>
+
+    <!-- 5 analyzers -->
+    <g transform="translate(24, 30)">
+      <rect width="150" height="55" rx="8" fill="#1F2937"/>
+      <text x="75" y="24" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="500">cadence_analyzer</text>
+      <text x="75" y="42" text-anchor="middle" font-size="11" fill="#6B7280">rhythm, pronouns</text>
+    </g>
+    <g transform="translate(196, 30)">
+      <rect width="150" height="55" rx="8" fill="#1F2937"/>
+      <text x="75" y="24" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="500">voice_fingerprinter</text>
+      <text x="75" y="42" text-anchor="middle" font-size="11" fill="#6B7280">MiniLM embeddings</text>
+    </g>
+    <g transform="translate(24, 105)">
+      <rect width="150" height="55" rx="8" fill="#1F2937"/>
+      <text x="75" y="24" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="500">vocabulary_clusterer</text>
+      <text x="75" y="42" text-anchor="middle" font-size="11" fill="#6B7280">TF-IDF + k-means</text>
+    </g>
+    <g transform="translate(196, 105)">
+      <rect width="150" height="55" rx="8" fill="#1F2937"/>
+      <text x="75" y="24" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="500">forbidden_detector</text>
+      <text x="75" y="42" text-anchor="middle" font-size="11" fill="#6B7280">vs wikitext-2 baseline</text>
+    </g>
+    <g transform="translate(110, 180)">
+      <rect width="150" height="55" rx="8" fill="#1F2937"/>
+      <text x="75" y="24" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="500">tone_classifier</text>
+      <text x="75" y="42" text-anchor="middle" font-size="11" fill="#6B7280">8-label heuristic</text>
+    </g>
+
+    <!-- pipeline.py orchestrator -->
+    <g transform="translate(80, 270)">
+      <rect width="210" height="48" rx="10" fill="#0A0A0F" stroke="#8B5CF6" stroke-opacity="0.6"/>
+      <text x="105" y="20" text-anchor="middle" font-size="14" fill="#FFFFFF" font-weight="500">pipeline.run_pipeline</text>
+      <text x="105" y="38" text-anchor="middle" font-size="11" fill="#9CA3AF">~3s end-to-end, local-only</text>
+    </g>
+  </g>
+
+  <!-- arrows engine → outputs -->
+  <g transform="translate(820, 260)">
+    <path d="M0,0 H110" stroke="#00D4FF" stroke-width="2" marker-end="url(#arrow)" stroke-opacity="0.6"/>
+    <text x="55" y="-12" text-anchor="middle" font-size="11" fill="#6B7280">fingerprint</text>
+  </g>
+
+  <!-- OUTPUTS (right) -->
+  <g transform="translate(950, 145)">
+    <text x="0" y="-20" font-size="11" fill="#6B7280" letter-spacing="2">OUTPUTS</text>
+
+    <rect x="0" y="0" width="360" height="80" rx="10" fill="#1F2937" stroke="#00D4FF" stroke-opacity="0.3"/>
+    <text x="20" y="28" font-size="15" font-family="JetBrains Mono, Menlo, monospace" fill="#FFFFFF">voice-fingerprint.json</text>
+    <text x="20" y="52" font-size="12" fill="#9CA3AF">Full raw signals. Debug + research.</text>
+
+    <rect x="0" y="100" width="360" height="80" rx="10" fill="#1F2937" stroke="#00D4FF" stroke-opacity="0.3"/>
+    <text x="20" y="128" font-size="15" font-family="JetBrains Mono, Menlo, monospace" fill="#FFFFFF">brand-config.json</text>
+    <text x="20" y="152" font-size="12" fill="#9CA3AF">Machine-readable brand rules.</text>
+
+    <rect x="0" y="200" width="360" height="100" rx="10" fill="#0A0A0F" stroke="url(#cyanGrad)" stroke-width="2" filter="url(#glow)"/>
+    <text x="20" y="232" font-size="18" font-family="JetBrains Mono, Menlo, monospace" fill="#00D4FF" font-weight="600">CLAUDE.md</text>
+    <text x="20" y="258" font-size="12" fill="#FFFFFF">LLM system prompt. Drop into Claude.</text>
+    <text x="20" y="278" font-size="12" fill="#9CA3AF">Cadence · signature vocab · forbidden · exemplars</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="700" y="680" text-anchor="middle" font-size="13" fill="#6B7280">
+    Baseline: wikitext-2 · Embeddings: all-MiniLM-L6-v2 · Runtime: Python 3.11+
+  </text>
+  <text x="700" y="700" text-anchor="middle" font-size="12" font-family="JetBrains Mono, Menlo, monospace" fill="#6B7280">
+    github.com/whystrohm/media-tsunami
+  </text>
+</svg>

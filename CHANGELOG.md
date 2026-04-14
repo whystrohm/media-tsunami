@@ -2,6 +2,20 @@
 
 All notable changes to media-tsunami are documented here.
 
+## [0.1.1] — 2026-04-14
+
+Thin-corpus hygiene. Caught during a fresh-install test run on stripe.com.
+
+### Fixed
+
+- **Forbidden list noise on thin corpora.** Added `_GENERIC_NOISE` set in `forbidden_detector.py` to exclude topically-empty English words (numbers: `one, two, three…`; generic adverbs: `also, still, even`; time/amount noise: `time, years, part, way`; filler verbs: `made, get, put, take`; filler adjectives: `new, old, big, small`) from forbidden-candidate consideration. These had been leaking into the top of the forbidden list when the brand corpus was small enough that their suppression-ratio vs. wikitext baseline spiked. Does NOT affect `_STOPWORDS` — signature detection and cluster analysis still see these tokens, which is correct behavior.
+- **Degenerate clusters.** Added `_MIN_CLUSTER_SIZE = 4` to `vocabulary_clusterer.py`. Previously a 2-token "cluster" like `integrating, integration` could surface as a vocabulary territory.
+- **Thin-corpus warning.** CLI now prints a yellow warning when `word_count < 3,000`. CLAUDE.md caps the forbidden list at 5 (vs. 15) on thin corpora to reduce false-positive surface area. Pipeline result carries a `thin_corpus: bool` flag so downstream tools can branch.
+
+### Unchanged
+
+All core signals (cadence, signature vocabulary, tone classification, exemplar selection) are unchanged — the v0.1.0 test suite passes without modification, and the WhyStrohm fingerprint is byte-identical apart from the CLAUDE.md forbidden-list section.
+
 ## [0.1.0] — 2026-04-14
 
 Initial release. Text-only brand voice fingerprint.

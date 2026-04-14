@@ -94,7 +94,10 @@ def build_claude_md(fingerprint: dict) -> str:
     exemplars = fingerprint["voice"]["closest_to_centroid"]
 
     signature_tokens = filter_signature_tokens(signature, limit=15)
-    forbidden_tokens = [w["token"] for w in forbidden[:15]]
+    # On thin corpora, cap forbidden list (5 instead of 15) — suppression-ratio
+    # signal is too noisy with limited data and risks surfacing false positives.
+    forbidden_limit = 5 if fingerprint.get("thin_corpus") else 15
+    forbidden_tokens = [w["token"] for w in forbidden[:forbidden_limit]]
 
     cluster_lines = []
     for c in clusters["clusters"]:

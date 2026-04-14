@@ -36,6 +36,26 @@ _DEFAULT_RELEVANCE_THRESHOLD = 0.55
 _CACHE_DIR = Path(__file__).resolve().parents[3] / ".cache"
 _BASELINE_PATH = _CACHE_DIR / "wikitext2_freqs.json"
 
+# Tokens that are topically empty — common English noise, not voice signal.
+# Excluded from forbidden candidate pool. NOT added to _STOPWORDS so signature
+# detection (where a brand's specific number use, e.g. "three pillars", might
+# matter) and cluster analysis can still see them.
+_GENERIC_NOISE = {
+    # cardinal numbers
+    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+    "hundred", "thousand", "million", "billion",
+    # ordinal-ish
+    "first", "second", "third", "fourth", "last", "later", "earlier",
+    # generic adverbs / connectives a brand neutrally uses or avoids without meaning
+    "also", "still", "even", "well", "way", "back",
+    # time / amount noise
+    "year", "years", "day", "days", "time", "times", "part", "parts",
+    # generic verbs
+    "made", "make", "made", "get", "got", "put", "take", "took", "say", "said", "go", "went",
+    # filler adjectives
+    "new", "old", "big", "small", "good", "bad", "long", "short",
+}
+
 
 def _tokenize(text: str) -> list[str]:
     return [
@@ -173,6 +193,8 @@ def detect_forbidden_and_signature(
     top_generic = sorted(base_rates.items(), key=lambda kv: kv[1], reverse=True)[:_GENERIC_COMMON_POOL]
     forbidden_candidates = []
     for tok, base_rate in top_generic:
+        if tok in _GENERIC_NOISE:
+            continue  # topically empty — not voice signal
         bcount = brand_counts.get(tok, 0)
         if bcount >= min_brand_count:
             continue  # brand actually uses this — not forbidden

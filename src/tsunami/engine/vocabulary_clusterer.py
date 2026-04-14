@@ -18,6 +18,7 @@ _MIN_LEN = 3
 _LABEL_TOP_K = 3
 _STOPWORD_CLUSTER_FRACTION = 0.6
 _STOPWORD_CHECK_TOP_K = 8
+_MIN_CLUSTER_SIZE = 4  # drop degenerate clusters (e.g., single-pair "integrating, integration")
 
 _EMPTY_RESULT = {
     "clusters": [],
@@ -133,10 +134,14 @@ def cluster_vocabulary(
             "centroid_embedding": mean_norm.astype(np.float32).tolist(),
         })
 
-    # Post-cluster drop: filter out clusters whose top tokens are mostly spaCy stopwords.
+    # Post-cluster drop: filter out clusters whose top tokens are mostly spaCy stopwords,
+    # and drop degenerate clusters with too few tokens (< _MIN_CLUSTER_SIZE).
     surviving: list[dict] = []
     n_dropped = 0
     for c in clusters:
+        if c["size"] < _MIN_CLUSTER_SIZE:
+            n_dropped += 1
+            continue
         top_slice = [tok for tok, _ in c["top_tokens"][:_STOPWORD_CHECK_TOP_K]]
         if not top_slice:
             surviving.append(c)

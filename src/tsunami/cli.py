@@ -81,6 +81,16 @@ def main(url, folder, output_dir, brand_name, max_pages):
     click.echo(f"Signature words: {', '.join(w['token'] for w in fingerprint['signature_words'][:8])}")
     click.echo(f"Forbidden words: {', '.join(w['token'] for w in fingerprint['forbidden_words'][:8])}")
 
+    if fingerprint.get("thin_corpus"):
+        click.echo("")
+        click.secho(
+            "⚠  Thin corpus warning: fewer than 3,000 words analyzed. "
+            "The cadence, signature, and tone signals are still reliable, but the forbidden-word "
+            "list is likely noisy. Re-run on a richer source (e.g. a blog folder or "
+            "/blog section) for a stronger fingerprint.",
+            fg="yellow"
+        )
+
 
 if __name__ == "__main__":
     main()

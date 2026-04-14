@@ -81,9 +81,14 @@ def test_forbidden_detection():
     result = detect_forbidden_and_signature(docs, top_forbidden=30)
     forbidden = {w["token"] for w in result["forbidden_words"]}
     # At least 3 of these common wikitext words should show up as forbidden.
-    expected_pool = {"time", "world", "years", "part", "system", "used", "made", "new", "first"}
+    # Note: numeric/generic words like "time", "years", "made", "new", "first"
+    # are filtered by _GENERIC_NOISE (topically empty, not voice signal).
+    # We expect the remaining genuinely stylistic/topical words.
+    expected_pool = {"world", "system", "used", "however", "including",
+                     "although", "several", "known", "music", "war", "film",
+                     "south", "north"}
     hits = forbidden & expected_pool
-    assert len(hits) >= 3, f"expected >=3 generic wikitext words in forbidden; got hits={hits}, list={forbidden}"
+    assert len(hits) >= 3, f"expected >=3 genuine wikitext words in forbidden; got hits={hits}, list={forbidden}"
 
 
 def test_against_whystrohm_corpus():

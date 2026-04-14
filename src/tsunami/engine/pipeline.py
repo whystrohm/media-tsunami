@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import time
 
+THIN_CORPUS_THRESHOLD = 3000  # words below this mean sparse signal — forbidden list is noisy
+
 from tsunami.engine.cadence_analyzer import analyze_corpus
 from tsunami.engine.forbidden_detector import detect_forbidden_and_signature
 from tsunami.engine.tone_classifier import classify_tone
@@ -51,11 +53,14 @@ def run_pipeline(docs: list[dict], brand_name: str = "Unknown", source: str = ""
     tone = classify_tone(cadence, signature_words=forbidden_sig["signature_words"])
     t_tone = time.time() - t0
 
+    thin_corpus = cadence["word_count"] < THIN_CORPUS_THRESHOLD
+
     return {
         "brand_name": brand_name,
         "source": source,
         "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
         "doc_count": len(docs),
+        "thin_corpus": thin_corpus,
         "cadence": cadence,
         "voice": {
             "top_vocab": voice["top_vocab"],

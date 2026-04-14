@@ -22,3 +22,6 @@ assets/hero.mp4
 
 # Proprietary modules wired in later — never commit
 private/
+
+# Launch copy — local-only, don't publish
+LAUNCH-COPY.md

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Use tsunami on your brand (commercial)
+    url: https://whystrohm.com/pricing
+    about: The paid version with PDF export, multi-channel rewrites, and a dedicated operator.
+  - name: Report a scraper failure on a specific site
+    url: https://github.com/whystrohm/media-tsunami/issues/new?template=bug_report.md
+    about: Site-specific scraping bugs go through the bug template.

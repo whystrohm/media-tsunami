@@ -2,7 +2,10 @@
 
 > Point it at a URL. Get back a `CLAUDE.md` that makes any LLM write like that brand.
 
-[![Tests](https://img.shields.io/badge/tests-59%20passing-brightgreen)](#tests) [![Python](https://img.shields.io/badge/python-3.11+-blue)](#install) [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![tests](https://github.com/whystrohm/media-tsunami/actions/workflows/tests.yml/badge.svg)](https://github.com/whystrohm/media-tsunami/actions/workflows/tests.yml)
+[![python](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13-blue)](#install)
+[![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![version](https://img.shields.io/github/v/tag/whystrohm/media-tsunami?label=version)](https://github.com/whystrohm/media-tsunami/releases)
 
 ![demo](assets/hero.gif)
 
